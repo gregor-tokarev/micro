@@ -2,12 +2,12 @@
 
 
 class Redirect extends Controller {
-    public function index($short_url = '') {
+    public function index(string $short_url = ''): void {
         $data = $this->model('url');
         $data = $data->getUrlByShort($short_url);
-        $url = $data['id'] != 0 ? $data['url'] : 'http://micro/Undefined';
-
+        print_r($data);
+        $url = $data['id'] !== 0 ? $data['url'] : 'http://micro/Undefined';
         header("Location: $url");
-        die();
+
     }
 }
