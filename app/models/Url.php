@@ -1,16 +1,10 @@
 <?php
 
-require_once 'app/core/DB.php';
 
-class Url {
-    private $pdo = null;
+class Url extends Model {
 
-    public function __construct() {
-        $this->pdo = DB::getDB();
-    }
-
-    public function getUrlByShort($short) {
-        $sql = "SELECT * FROM `urls` WHERE `short_url` = '$short'";
+    public function getUrlByShort(string $short) {
+        $sql = "SELECT * FROM `urls` WHERE short_url = '$short'";
         $url = $this->pdo->query($sql);
         $url = $url->fetch(PDO::FETCH_ASSOC);
 
