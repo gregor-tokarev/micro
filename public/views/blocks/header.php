@@ -1,4 +1,4 @@
-<header class="header">
+<header class="header shadow">
   <div class="header__wrapper navbar">
     <div class="header__logo navbar-brand">
       <h1 class="h3">Micro</h1>

@@ -8,4 +8,9 @@ class Users extends Model {
         else return 'OK';
     }
 
+    public function addUser(array $data) {
+        $sql = 'INSERT INTO `users`(login, email, reg_time, password) VALUES (?, ?, ?, ?)';
+        $res = $this->pdo->prepare($sql);
+        $res = $res->execute([$data['login'], $data['email'], time(), $data['password']]);
+    }
 }

@@ -12,11 +12,21 @@
 <body>
 <?php include 'blocks/header.php'; ?>
 
-<p></p>
+<p class="form">
+  <label for="login">Login</label>
+  <input class="form-control" id="login" type="text">
+  <label for="email">Email</label>
+  <input class="form-control" id="email" type="email">
+  <label for="password">Password</label>
+  <input class="form-control" id="password" type="password">
+  <button class="btn btn-danger">Зарегестрироваться</button>
+</p>
 
+<?php include 'blocks/footer.php'; ?>
 <script
         src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
         crossorigin="anonymous"></script>
+<script src="public/js/send.js"></script>
 </body>
 </html>
