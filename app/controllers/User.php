@@ -3,7 +3,7 @@
 
 class User extends Controller {
 
-    public function index() {
+    public function index($set = '') {
         $this->view('dashboard');
     }
 
@@ -23,10 +23,15 @@ class User extends Controller {
         } else {
             $password = password_hash($password, PASSWORD_DEFAULT);
             $user->regUser(['login' => $login, 'password' => $password, 'email' => $email]);
+            setcookie('login', $login, time() + 3600 * 24 * 2, '/');
             echo 'OK';
-            setcookie('login', $login, 3600 * 24 * 2, '/');
         }
 
+    }
+
+    public function signOut(){
+        unset($_COOKIE['login']);
+        setcookie('login', '', time() - 123, '/');
     }
 
     public function dashboard() {

@@ -20,6 +20,7 @@ let loginField = document.querySelector('#login').value,
         },
         success: function (answer) {
             alert.innerHTML = answer;
+            if (answer === 'OK') window.location.href = 'http://micro/user/dashboard';
         }
     });
 });
