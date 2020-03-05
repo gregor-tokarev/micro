@@ -6,6 +6,7 @@
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700&subset=latin,cyrillic' rel='stylesheet'
         type='text/css'>
+  <link rel="stylesheet" href="public/css/main.css">
   <style type="text/css">
     html, body {
       width: 100%;

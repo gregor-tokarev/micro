@@ -3,6 +3,10 @@
 
 class User extends Controller {
 
+    public function index() {
+        $this->view('dashboard');
+    }
+
     public function auth() {
         $this->view('auth');
     }
@@ -13,18 +17,19 @@ class User extends Controller {
         $password = trim(filter_var($_POST['password'], FILTER_SANITIZE_STRING));
 
         $user = $this->model('users');
-        print_r($user->verified(['login' => $login, 'email' => $email, 'password' => $password]));
-//        if ($user->verified(['login' => $login, 'email' => $email, 'password' => $password]) != 'OK'){
-//            echo $user->verified(['login' => $login, 'email' => $email, 'password' => $password]);
-//            die();
-//        }
-//
-//        else {
-//            $password = password_hash($password, PASSWORD_DEFAULT);
-//            $user->regUser(['login' => $login, 'password' => $password, 'email' => $email]);
-//            echo 'OK';
-//            header('Location: /user/dashboard');
-//        }
+        if ($user->verified(['login' => $login, 'email' => $email, 'password' => $password]) != 'OK') {
+            echo $user->verified(['login' => $login, 'email' => $email, 'password' => $password]);
+            die();
+        } else {
+            $password = password_hash($password, PASSWORD_DEFAULT);
+            $user->regUser(['login' => $login, 'password' => $password, 'email' => $email]);
+            echo 'OK';
+            setcookie('login', $login, 3600 * 24 * 2, '/');
+        }
 
+    }
+
+    public function dashboard() {
+        $this->view('dashboard');
     }
 }

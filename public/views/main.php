@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="public/css/main.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <title>Home</title>
+  <title><?=$_COOKIE['login']?></title>
 </head>
 <body>
 <?php include 'blocks/header.php'; ?>
