@@ -19,14 +19,12 @@
   <input class="form-control" id="email" type="email">
   <label for="password">Password</label>
   <input class="form-control" id="password" type="password">
-  <button class="btn btn-danger">Зарегестрироваться</button>
+  <button class="btn btn-danger form__button" >Зарегестрироваться</button>
+  <span class="text-warning" id="alert"></span>
 </p>
 
 <?php include 'blocks/footer.php'; ?>
-<script
-        src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
-        crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="public/js/send.js"></script>
 </body>
 </html>

@@ -20,9 +20,10 @@ abstract class Model {
         return $res->fetch(PDO::FETCH_ASSOC);
     }
 
-    protected function isExist($field, $value) {
-        $res = $this->pdo->prepare("SELECT * FROM `users` WHERE `$field` = ? LIMIT 1");
-        $res = $res->execute([$value]);
+    protected function isExist($field, $value, $table = 'users') {
+        $res = $this->pdo->query("SELECT * FROM `$table` WHERE `$field` = '$value'");
+//        $res = $res->execute([$value]);
+        $res = $res->fetch(PDO::FETCH_ASSOC);
         return $res['id'] != 0;
     }
 }

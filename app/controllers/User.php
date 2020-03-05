@@ -12,15 +12,19 @@ class User extends Controller {
         $email = trim(filter_var($_POST['email'], FILTER_SANITIZE_EMAIL));
         $password = trim(filter_var($_POST['password'], FILTER_SANITIZE_STRING));
 
-        $password = password_hash($password);
-        $user = $this->model('user');
-        if ($user->verified(['login' => $login, 'email' => $email, 'password' => $password]) != 'OK')
-            echo $user->verified(['login' => $login, 'email' => $email, 'password' => $password]);
-        else {
-            $user->regUser(['login' => $login, 'password' => $password, 'email' => $email]);
-            echo 'OK';
-            header('Location: /user/dashboard');
-        }
+        $user = $this->model('users');
+        print_r($user->verified(['login' => $login, 'email' => $email, 'password' => $password]));
+//        if ($user->verified(['login' => $login, 'email' => $email, 'password' => $password]) != 'OK'){
+//            echo $user->verified(['login' => $login, 'email' => $email, 'password' => $password]);
+//            die();
+//        }
+//
+//        else {
+//            $password = password_hash($password, PASSWORD_DEFAULT);
+//            $user->regUser(['login' => $login, 'password' => $password, 'email' => $email]);
+//            echo 'OK';
+//            header('Location: /user/dashboard');
+//        }
 
     }
 }
