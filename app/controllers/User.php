@@ -9,16 +9,7 @@ class User extends Controller {
         $password = trim(filter_var($_POST['password'], FILTER_SANITIZE_STRING));
 
         $user = $this->model('users');
-
-        if ($user->valid(['login' => $login, 'password' => $password]) != 'OK') {
-            echo $user->valid(['login' => $login, 'password' => $password]);
-            die();
-        } else {
-            $password = password_hash($password, PASSWORD_DEFAULT);
-            $user->authUser(['login' => $login, 'password' => $password]);
-//            setcookie('login', $login, time() + 3600 * 24 * 2, '/');
-            echo 'OK';
-        }
+        $user->authUser(['login' => $login, 'password' => $password]);
     }
 
     public function auth() {
@@ -38,7 +29,6 @@ class User extends Controller {
             $password = password_hash($password, PASSWORD_DEFAULT);
             $user->regUser(['login' => $login, 'password' => $password, 'email' => $email]);
             setcookie('login', $login, time() + 3600 * 24 * 2, '/');
-            echo 'OK';
         }
 
     }

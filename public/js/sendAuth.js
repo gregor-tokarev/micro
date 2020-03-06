@@ -13,8 +13,8 @@ sendReg.addEventListener('click', function () {
         cache: false,
         dataType: 'html',
         data: {
-            'login': loginField,
-            'password': passwordField
+            login: loginField,
+            password: passwordField
         },
         success: function (answer) {
             alert.innerHTML = answer;

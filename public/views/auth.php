@@ -23,6 +23,6 @@
 
 <?php include 'blocks/footer.php'; ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="public/js/sendAuth.js"></script>
+<script src="http://micro/public/js/sendAuth.js"></script>
 </body>
 </html>

@@ -12,18 +12,20 @@ class Users extends Model {
 
     public function authUser(array $data) {
         $login = $data['login'];
-        $password = password_hash($data['password'], PASSWORD_DEFAULT);
-        $query = $this->pdo->query("SELECT * FROM `users` WHERE `name` = $login");
+        $password = $data['password'];
+        $query = $this->pdo->query("SELECT * FROM `users` WHERE `name` = '$login'");
         $res = $query->fetch(PDO::FETCH_ASSOC);
-        if ($res['id'] != 0 && $res['password'] = $password)
+        if ($res['id'] == 0) echo 'Такого ползователя не существует';
+        elseif( !password_verify($password, $res['password']) )echo 'Неверный пароль';
+        else {
             setcookie('login', $res['name'], time() + 3600 * 24 * 2, '/');
-        else
-            echo 'Неверный пароль';
+            echo 'OK';
+        }
     }
 
     public function regUser(array $data) {
         $sql = 'INSERT INTO `users`(name, email, reg_time, password) VALUES (?, ?, ?, ?)';
         $res = $this->pdo->prepare($sql);
-        $res = $res->execute([$data['login'], $data['email'], time(), $data['password']]);
+        $res->execute([$data['login'], $data['email'], time(), $data['password']]);
     }
 }

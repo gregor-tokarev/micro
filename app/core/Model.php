@@ -22,7 +22,6 @@ abstract class Model {
 
     protected function isExist($field, $value, $table = 'users') {
         $res = $this->pdo->query("SELECT * FROM `$table` WHERE `$field` = '$value'");
-//        $res = $res->execute([$value]);
         $res = $res->fetch(PDO::FETCH_ASSOC);
         return $res['id'] != 0;
     }

@@ -11,20 +11,33 @@
 </head>
 <body>
 <?php include 'blocks/header.php'; ?>
-
-<p class="form">
-  <label for="login">Login</label>
-  <input class="form-control" id="login" type="text">
-  <label for="email">Email</label>
-  <input class="form-control" id="email" type="email">
-  <label for="password">Password</label>
-  <input class="form-control" id="password" type="password">
-  <button class="btn btn-danger form__button" >Зарегестрироваться</button>
-  <span class="text-warning" id="alert"></span>
-</p>
-
+<?php if (isset($_COOKIE['login'])): ?>
+  <div class="form">
+    <label for="url">Плоный Url</label>
+    <input type="text" id="url" class="form-control">
+    <label for="shortUrl">Желаемое сокращение</label>
+    <input type="text" id="shortUrl" class="form-control">
+  <div class="arlet" id="alert"></div>
+  <button class="btn btn-danger" id="createUrl">Сократить</button>
+  </div>
+<?php else: ?>
+  <div class="form">
+    <label for="login">Login</label>
+    <input class="form-control" id="login" type="text">
+    <label for="email">Email</label>
+    <input class="form-control" id="email" type="email">
+    <label for="password">Password</label>
+    <input class="form-control" id="password" type="password">
+  <div class="text-warning" id="alert"></div>
+  <button class="btn btn-danger form__button">Зарегестрироваться</button>
+  </div>
+<?php endif; ?>
 <?php include 'blocks/footer.php'; ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="public/js/sendReg.js"></script>
+<?php if(!isset($_COOKIE['login'])): ?>
+<script src="http://micro/public/js/sendReg.js"></script>
+<?php else:?>
+<script src="http://micro/public/js/sendUrl.js"></script>
+<?php endif;?>
 </body>
 </html>
