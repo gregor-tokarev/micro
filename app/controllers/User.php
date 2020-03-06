@@ -3,11 +3,22 @@
 
 class User extends Controller {
 
-    public function index($set = '') {
-        $this->view('dashboard');
-    }
 
     public function auth() {
+        $login = trim(filter_var($_POST['login'], FILTER_SANITIZE_STRING));
+        $password = trim(filter_var($_POST['password'], FILTER_SANITIZE_STRING));
+
+        $user = $this->model('users');
+
+        if ($user->valid(['login' => $login, 'password' => $password]) != 'OK') {
+            echo $user->valid(['login' => $login, 'password' => $password]);
+            die();
+        } else {
+            $password = password_hash($password, PASSWORD_DEFAULT);
+            $user->regUser(['login' => $login, 'password' => $password]);
+            setcookie('login', $login, time() + 3600 * 24 * 2, '/');
+            echo 'OK';
+        }
         $this->view('auth');
     }
 
@@ -17,8 +28,8 @@ class User extends Controller {
         $password = trim(filter_var($_POST['password'], FILTER_SANITIZE_STRING));
 
         $user = $this->model('users');
-        if ($user->verified(['login' => $login, 'email' => $email, 'password' => $password]) != 'OK') {
-            echo $user->verified(['login' => $login, 'email' => $email, 'password' => $password]);
+        if ($user->valid(['login' => $login, 'email' => $email, 'password' => $password]) != 'OK') {
+            echo $user->valid(['login' => $login, 'email' => $email, 'password' => $password]);
             die();
         } else {
             $password = password_hash($password, PASSWORD_DEFAULT);
@@ -29,9 +40,10 @@ class User extends Controller {
 
     }
 
-    public function signOut(){
-        unset($_COOKIE['login']);
+    public function logOut() {
         setcookie('login', '', time() - 123, '/');
+        unset($_COOKIE['login']);
+        echo 'OK';
     }
 
     public function dashboard() {

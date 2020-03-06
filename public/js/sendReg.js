@@ -1,9 +1,9 @@
 
 let alert = document.querySelector('#alert');
 
-let send = document.querySelector('.form__button');
+let sendReg = document.querySelector('.form__button');
 
-send.addEventListener('click', function () {
+sendReg.addEventListener('click', function () {
 let loginField = document.querySelector('#login').value,
     emailField = document.querySelector('#email').value,
     passwordField = document.querySelector('#password').value;

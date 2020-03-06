@@ -12,7 +12,10 @@
 <body>
 <?php include 'public/views/blocks/header.php';?>
 <?=$_COOKIE['login']; ?>
-
+<button class="btn btn-danger" id="logOut">log out</button>
 <?php include 'blocks/footer.php';?>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script src="http://micro/public/js/logOut.js"></script>
 </body>
 </html>
