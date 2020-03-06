@@ -8,7 +8,7 @@ sendReg.addEventListener('click', function () {
         passwordField = document.querySelector('#password').value;
 
     $.ajax({
-        url: '/user/auth',
+        url: '/user/signIn',
         type: 'POST',
         cache: false,
         dataType: 'html',

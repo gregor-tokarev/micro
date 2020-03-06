@@ -4,7 +4,7 @@
 class User extends Controller {
 
 
-    public function auth() {
+    public function signIn() {
         $login = trim(filter_var($_POST['login'], FILTER_SANITIZE_STRING));
         $password = trim(filter_var($_POST['password'], FILTER_SANITIZE_STRING));
 
@@ -15,10 +15,13 @@ class User extends Controller {
             die();
         } else {
             $password = password_hash($password, PASSWORD_DEFAULT);
-            $user->regUser(['login' => $login, 'password' => $password]);
-            setcookie('login', $login, time() + 3600 * 24 * 2, '/');
+            $user->authUser(['login' => $login, 'password' => $password]);
+//            setcookie('login', $login, time() + 3600 * 24 * 2, '/');
             echo 'OK';
         }
+    }
+
+    public function auth() {
         $this->view('auth');
     }
 

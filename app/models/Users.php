@@ -11,7 +11,14 @@ class Users extends Model {
     }
 
     public function authUser(array $data) {
-
+        $login = $data['login'];
+        $password = password_hash($data['password'], PASSWORD_DEFAULT);
+        $query = $this->pdo->query("SELECT * FROM `users` WHERE `name` = $login");
+        $res = $query->fetch(PDO::FETCH_ASSOC);
+        if ($res['id'] != 0 && $res['password'] = $password)
+            setcookie('login', $res['name'], time() + 3600 * 24 * 2, '/');
+        else
+            echo 'Неверный пароль';
     }
 
     public function regUser(array $data) {

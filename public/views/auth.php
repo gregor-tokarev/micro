@@ -15,7 +15,6 @@
 <p class="form">
     <label for="login">Login</label>
     <input class="form-control" id="login" type="text">
-    <label for="email">Email</label>
     <label for="password">Password</label>
     <input class="form-control" id="password" type="password">
     <button class="btn btn-danger form__button" >Войти</button>
