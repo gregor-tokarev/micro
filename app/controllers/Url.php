@@ -9,4 +9,12 @@ class Url extends Controller {
         $urls = $this->model('urls');
         echo $urls->addUrl(['url' => $url, 'shortUrl' => $shortUrl]);
     }
+
+    public function deleteUrl() {
+        $id = trim(filter_var($_POST['id'], FILTER_SANITIZE_STRING));
+
+        $url = $this->model('urls');
+        $url->deleteUrl($id);
+        echo 'OK';
+    }
 }

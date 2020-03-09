@@ -22,3 +22,6 @@ body {
   margin: 50px auto 0; }
   .form > input {
     margin-bottom: 20px; }
+
+.list-group {
+  padding-bottom: 20vh; }

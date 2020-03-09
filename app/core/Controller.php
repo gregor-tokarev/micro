@@ -2,7 +2,7 @@
 
 
 abstract class Controller {
-    protected function view(string $view): void {
+    protected function view(string $view, $data = []): void {
         if (file_exists("public/views/$view.php")) require_once "public/views/$view.php";
     }
 

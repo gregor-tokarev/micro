@@ -5,7 +5,6 @@
     </div>
     <nav class="header__nav navbar-nav d-flex flex-row">
       <a href="/">Главная</a>
-      <a href="/about">Про нас</a>
       <a href="/contacts">Контакты</a>
         <?php if (!isset($_COOKIE['login'])): ?>
           <a href="user/auth" class="header__btn">Войти</a>
