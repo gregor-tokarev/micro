@@ -3,7 +3,7 @@
 
 class App {
 
-    protected $controller = 'Redirect';
+    protected $controller = 'Home';
     protected $method = 'index';
     protected $params = [];
 
@@ -13,7 +13,8 @@ class App {
         if (file_exists('app/controllers/' . ucfirst($url[0]) . '.php')) {
             $this->controller = ucfirst($url[0]);
             unset($url[0]);
-        }
+        } elseif ($url[0] == '') $this->controller = 'Home';
+        else $this->controller = 'Undefined';
         require_once 'app/controllers/' . $this->controller . '.php';
 
         $this->controller = new $this->controller;

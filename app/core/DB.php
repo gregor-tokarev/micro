@@ -1,4 +1,6 @@
 <?php
+
+
 class DB {
     private static $_db = null;
 
