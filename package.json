@@ -8,6 +8,9 @@
   },
   "author": "zipper <zippper123915@gmail.com>",
   "license": "ISC",
+  "engines": {
+    "node": "^12"
+  },
   "devDependencies": {
     "gulp": "^4.0.2",
     "gulp-cli": "^2.2.0",
